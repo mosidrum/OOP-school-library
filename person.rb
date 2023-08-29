@@ -11,7 +11,7 @@ class Person
   end
 
   def can_use_service?
-    true if of_age? || @parent_permission
+    return true if of_age? || @parent_permission
 
     false
   end
@@ -19,7 +19,7 @@ class Person
   private
 
   def of_age?
-    true if @age >= 18
+    return true if @age >= 18
 
     false
   end
