@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'base_decorator'
 
 # Implement a method correct_name that capitalizes the output of @nameable.correct_name.
