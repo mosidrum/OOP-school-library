@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Represents a teacher with specific attributes and
 class Teacher < Person
   attr_accessor :specialization

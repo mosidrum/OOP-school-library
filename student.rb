@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Represents a student with specific attributes and behaviors
 class Student < Person
   attr_accessor :classroom
