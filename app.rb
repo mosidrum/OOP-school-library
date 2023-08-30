@@ -49,7 +49,7 @@ def create_student(name, age, classroom_label)
   puts 'Student is created successfully'
 end
 
-#creating a book
+# creating a book
 def create_book
   puts 'Create a book!'
   puts 'Enter title of book:'
@@ -99,7 +99,7 @@ def list_rentals_for_person
     puts 'No record for person found'
     return
   end
-  rentals = @rentals.select { |x| x.person = person}
+  rentals = @rentals.select { |x| x.person = person }
   puts "Rentals for #{person.name}:"
   rentals.each do |rent|
     puts "#{rent.book.title} by #{rent.book.author} and date #{rent.date}"
