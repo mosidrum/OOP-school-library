@@ -64,9 +64,9 @@ class App
     age = gets.chomp
     print 'Does the student have parent permission? [Y/N]:'
     parent_permission = gets.chomp
-    if parent_permission.downcase = 'y'
+    if parent_permission.downcase == 'y'
       student = Student.new('classroom', name, false, age)
-    elsif parent_permission.downcase = 'n'
+    elsif parent_permission.downcase == 'n'
       student = Student.new('classroom', name, true, age)
     else
       puts 'Invalid input'
