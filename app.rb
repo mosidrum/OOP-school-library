@@ -41,13 +41,13 @@ class App
     elsif input == 2
       create_student
     else
-      "Invalid. Choose [1] to create a teacher or [2] to create a student"
+      'Invalid. Choose [1] to create a teacher or [2] to create a student'
     end
   end
 
   def create_teacher
     print 'Enter name of the teacher:'
-    name= gets.chomp
+    name = gets.chomp
     print 'Enter the age of the teacher:'
     age = gets.chomp.to_i
     print 'Enter his/her specialization:'
@@ -64,9 +64,9 @@ class App
     age = gets.chomp
     print 'Does the student have parent permission? [Y/N]:'
     parent_permission = gets.chomp
-    if parent_permission.downcase = y
+    if parent_permission.downcase = 'y'
       student = Student.new('classroom', name, false, age)
-    elsif parent_permission.downcase = n
+    elsif parent_permission.downcase = 'n'
       student = Student.new('classroom', name, true, age)
     else
       puts 'Invalid input'
@@ -90,9 +90,10 @@ class App
     puts 'Enter the Id of the person'
     input_id = get.chomp.to_i
     search = @rentals.select { |rent| rent.person.id == input_id }
-    if search.empty? puts "The person with id #{input_id} has not rented any book"
+    if search.empty?
+      puts "The person with id #{input_id} has not rented any book"
     else
-      puts "The books rented are:"
+      puts 'The books rented are:'
       search.each do |x|
         puts "Book: #{x.title} by #{x.author} on Date: #{x.date}"
       end
@@ -101,7 +102,7 @@ class App
 
   def create_rental
     puts 'Select a book to rent from the list:'
-    @books.each_with_index { |book, index | puts "#{index} Title: #{book.title}, Author: #{book.author}" }
+    @books.each_with_index { |book, index| puts "#{index} Title: #{book.title}, Author: #{book.author}" }
     book_index = gets.chomp
 
     puts 'Select your name from the following list'
