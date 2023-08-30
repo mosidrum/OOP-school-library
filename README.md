@@ -90,8 +90,6 @@ Install this project with:
 
 it will install the required gemfile for running the project
 
-### Usage
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- AUTHORS -->
