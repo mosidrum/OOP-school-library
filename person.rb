@@ -11,6 +11,7 @@ class Person < Nameable
     @id = rand(1..1000)
     @name = name
     @age = age
+    @rentals = []
     @parent_permission = parent_permission
     super()
   end
@@ -25,16 +26,15 @@ class Person < Nameable
     false
   end
 
+  def add_rental(rental)
+    @rentals << rental
+  end
+
   private
 
   def of_age?
     return true if @age >= 18
 
     false
-  end
-
-  def add_rental(rental)
-    @rentals << rental
-    rental.person = self
   end
 end
