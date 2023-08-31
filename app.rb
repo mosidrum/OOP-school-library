@@ -66,9 +66,9 @@ class App
     print 'Does the student have parent permission? [Y/N]: '
     parent_permission = gets.chomp
     if parent_permission.downcase == 'y'
-      student = Student.new(name, false, age)
+      student = Student.new(age, name, false)
     elsif parent_permission.downcase == 'n'
-      student = Student.new(name, true, age)
+      student = Student.new(age, name, true)
     else
       puts 'Invalid input'
       return
@@ -96,7 +96,7 @@ class App
     else
       puts 'The books rented are:'
       search.each do |x|
-        puts "Book: #{x.title} by #{x.author} on Date: #{x.date}"
+        puts "Book: #{x.book.title} by #{x.book.author} on Date: #{x.date}"
       end
     end
   end
@@ -118,6 +118,7 @@ class App
 
     rental = Rentals.new(person, book, date)  # Use instances, not indices
     person.add_rental(rental)
+    book.add_rental(person, rental)
     @rentals << rental
     puts 'Rent created successfully'
   end
