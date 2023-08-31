@@ -41,6 +41,7 @@ def display(app)
     break if user_input == 7
   end
 end
+
 def main
   app = App.new
   display(app)

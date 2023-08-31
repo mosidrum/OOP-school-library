@@ -116,7 +116,7 @@ class App
     person = @people[person_index]
     book = @books[book_index]
 
-    rental = Rentals.new(person, book, date)  # Use instances, not indices
+    rental = Rentals.new(person, book, date)
     person.add_rental(rental)
     book.add_rental(person, rental)
     @rentals << rental
