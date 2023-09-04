@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 require_relative 'student'
-# rubocop:disable Style/Documentation
 class StudentCreator
   def create
     print 'Enter the name of the student: '
@@ -20,4 +17,3 @@ class StudentCreator
     end
   end
 end
-# rubocop:enable Style/Documentation

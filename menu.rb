@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require_relative 'app'
 
 # menu.rb
@@ -40,9 +38,7 @@ class Menu
           do_create_person(app)
         when 3
           do_create_rental(app)
-        when 4
-          app.send(choices[user_input])
-        when 5
+        when 4, 5
           app.send(choices[user_input])
         when 6
           do_list_rentals(app)

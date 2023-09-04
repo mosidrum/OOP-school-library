@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 require_relative 'teacher'
-# rubocop:disable Style/Documentation
 class TeacherCreator
   def create
     print 'Enter name of the teacher: '
@@ -13,4 +10,3 @@ class TeacherCreator
     Teacher.new(age, specialization, name)
   end
 end
-# rubocop:enable Style/Documentation

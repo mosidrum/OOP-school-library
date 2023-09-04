@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 require_relative 'book'
-# rubocop:disable Style/Documentation
 class BookCreator
   def create
     print 'Enter the title of the book: '
@@ -11,4 +8,3 @@ class BookCreator
     Book.new(title, author)
   end
 end
-# rubocop:enable Style/Documentation

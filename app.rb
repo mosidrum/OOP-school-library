@@ -1,12 +1,9 @@
-# frozen_string_literal: true
-
 require_relative 'person'
 require_relative 'student_creator'
 require_relative 'classroom'
 require_relative 'rental_creator'
 require_relative 'teacher_creator'
 require_relative 'book_creator'
-# rubocop:disable Style/Documentation
 class App
   def initialize
     @rentals = []
@@ -59,4 +56,3 @@ class App
     end
   end
 end
-# rubocop:enable Style/Documentation
