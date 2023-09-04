@@ -1,9 +1,9 @@
 require_relative 'person'
-require_relative 'student'
+require_relative 'student_creator'
 require_relative 'classroom'
-require_relative 'rentals'
-require_relative 'teacher'
-require_relative 'book'
+require_relative 'rental_creator'
+require_relative 'teacher_creator'
+require_relative 'book_creator'
 
 class App
   def initialize
@@ -47,42 +47,19 @@ class App
   end
 
   def create_teacher
-    print 'Enter name of the teacher: '
-    name = gets.chomp
-    print 'Enter the age of the teacher: '
-    age = gets.chomp.to_i
-    print 'Enter his/her specialization: '
-    specialization = gets.chomp
-    teacher = Teacher.new(age, specialization, name)
+    teacher = TeacherCreator.new.create
     @people << teacher
     puts 'Teacher was created successfully'
   end
 
   def create_student
-    print 'Enter the name of the student: '
-    name = gets.chomp
-    print 'Enter the age of the student: '
-    age = gets.chomp
-    print 'Does the student have parent permission? [Y/N]: '
-    parent_permission = gets.chomp
-    if parent_permission.downcase == 'y'
-      student = Student.new(age, name, false)
-    elsif parent_permission.downcase == 'n'
-      student = Student.new(age, name, true)
-    else
-      puts 'Invalid input'
-      return
-    end
+    student = StudentCreator.new.create
     @people << student
     puts 'Student created successfully'
   end
 
   def create_book
-    print 'Enter the title of the book: '
-    title = gets.chomp
-    print 'Enter name of author: '
-    author = gets.chomp
-    book = Book.new(title, author)
+    book = BookCreator.new.create
     @books << book
     puts 'Book created successfully'
   end
@@ -90,36 +67,27 @@ class App
   def list_rentals
     puts 'Enter the Id of the person: '
     input_id = gets.chomp.to_i
-    search = @rentals.select { |rent| rent.person.id == input_id }
-    if search.empty?
-      puts "The person with id #{input_id} has not rented any book"
+    person = find_person_by_id(input_id)
+
+    if person
+      person.list_rentals
     else
-      puts 'The books rented are:'
-      search.each do |x|
-        puts "Book: #{x.book.title} by #{x.book.author} on Date: #{x.date}"
-      end
+      puts "No person with Id #{input_id} found in the library"
     end
   end
 
   def create_rental
-    puts 'Select a book to rent from the list: '
-    @books.each_with_index { |book, index| puts "#{index} Title: #{book.title}, Author: #{book.author}" }
-    book_index = gets.chomp.to_i
+    rental = RentalCreator.new.create(@people, @books, @date)
+    if rental
+      @rentals << rental
+      puts "Rent created successfully."
+    else
+      puts 'Rent creation failed.'
+    end
+  end
 
-    puts 'Select your name from the following list: '
-    @people.each_with_index { |person, index| puts "#{index} Name: #{person.name} Age: #{person.age}" }
-    person_index = gets.chomp.to_i
-
-    puts 'Enter date (YYYY-MM-DD): '
-    date = gets.chomp
-
-    person = @people[person_index]
-    book = @books[book_index]
-
-    rental = Rentals.new(person, book, date)
-    person.add_rental(rental)
-    book.add_rental(person, rental)
-    @rentals << rental
-    puts 'Rent created successfully'
+  def find_person_by_id(id)
+    @people.find {|person| person.id == id}
   end
 end
+

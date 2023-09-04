@@ -30,6 +30,17 @@ class Person < Nameable
     @rentals << rental
   end
 
+  def list_rentals
+    if @rentals.empty?
+      puts "No rentals for #{@name}"
+    else
+      puts "#{@name}'s rentals:"
+      @rentals.each do |rental|
+        puts "Book: #{rental.book.title} by #{rental.book.author} on Date: #{rental.date}"
+      end
+    end
+  end
+
   private
 
   def of_age?
