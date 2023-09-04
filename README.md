@@ -101,10 +101,10 @@ it will install the required gemfile for running the project
 - GitHub: [@mosidrum](https://github.com/mosidrum)
 - LinkedIn: [mosidrum](https://linkedin.com/in/isaac-ayodele-37890521b/)
 
-👤 **Ayodele Isaac**
+👤 **Jalloh**
 
-- GitHub: [@mosidrum](https://github.com/mosidrum)
-- LinkedIn: [mosidrum](https://linkedin.com/in/isaac-ayodele-37890521b/)
+- GitHub: [@aradradev](https://github.com/aradradev)
+- LinkedIn: [Abdourahmane Jalloh](https://www.linkedin.com/in/abdul-jalloh)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
