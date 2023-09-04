@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Handles error for the name_method
 #
 class Nameable

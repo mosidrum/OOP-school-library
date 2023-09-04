@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require_relative 'rentals'
 require_relative 'book'
 require_relative 'person'
+
 class RentalCreator
-    def create(people, books, date)
+  def create(people, books, date)
     puts 'Select a book to rent from the list: '
     books.each_with_index { |book, index| puts "#{index} Title: #{book.title}, Author: #{book.author}" }
     book_index = gets.chomp.to_i

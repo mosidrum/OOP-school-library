@@ -1,20 +1,23 @@
-require_relative 'student'
+# frozen_string_literal: true
 
+require_relative 'student'
+# rubocop:disable Style/Documentation
 class StudentCreator
-    def create
-        print 'Enter the name of the student: '
+  def create
+    print 'Enter the name of the student: '
     name = gets.chomp
     print 'Enter the age of the student: '
     age = gets.chomp
     print 'Does the student have parent permission? [Y/N]: '
     parent_permission = gets.chomp
     if parent_permission.downcase == 'y'
-      student = Student.new(age, name, false)
+      Student.new(age, name, false)
     elsif parent_permission.downcase == 'n'
-      student = Student.new(age, name, true)
+      Student.new(age, name, true)
     else
       puts 'Invalid input'
-      return
+      nil
     end
-    end
+  end
 end
+# rubocop:enable Style/Documentation

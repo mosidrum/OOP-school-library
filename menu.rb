@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'app'
 
 # menu.rb
@@ -104,7 +106,7 @@ class Menu
     print 'Enter the index of the book you want to rent: '
     book_index = gets.chomp.to_i
 
-    if book_index < 0 || book_index >= app.books.length
+    if book_index.negative? || book_index >= app.books.length
       puts 'Invalid book index.'
       return
     end
@@ -115,7 +117,7 @@ class Menu
     print 'Enter the index of your name: '
     person_index = gets.chomp.to_i
 
-    if person_index < 0 || person_index >= app.people.length
+    if person_index.negative? || person_index >= app.people.length
       puts 'Invalid person index.'
       return
     end
