@@ -1,9 +1,9 @@
 require_relative 'person'
-require_relative 'student'
+require_relative 'student_creator'
 require_relative 'classroom'
-require_relative 'rentals'
-require_relative 'teacher'
-require_relative 'book'
+require_relative 'rental_creator'
+require_relative 'teacher_creator'
+require_relative 'book_creator'
 
 class App
   def initialize
@@ -57,3 +57,4 @@ class App
     end
   end
 end
+
