@@ -9,11 +9,13 @@ class App
     @rentals = []
     @people = []
     @books = []
+    @book_index = 0
   end
 
   def create_book(title, author)
-    book = Book.new(title, author)
+    book = Book.new(title, author, @book_index)
     @books << book
+    @book_index += 1
     book
   end
 
@@ -45,14 +47,14 @@ class App
 
   def list_all_books
     @books.each do |book|
-      puts "Author: #{book.author}, Title: #{book.title}"
+      puts "S/NO: #{book.index}, Author: #{book.author}, Title: #{book.title}"
     end
   end
 
   def list_rentals_by_person(person_id)
     search = @rentals.select { |rent| rent.person.id == person_id }
     search.each do |rent|
-      puts "Book: #{rent.book.title} by #{rent.book.author} on Date: #{rent.date}"
+      puts "Book: #{rent.book.title} by #{rent.book.author} was rented on Date: #{rent.date}"
     end
   end
 end
