@@ -5,6 +5,7 @@ require_relative 'rental_creator'
 require_relative 'teacher_creator'
 require_relative 'book_creator'
 require_relative 'file_writer'
+require_relative 'file_loader'
 require 'json'
 class App < FileWriter
   def initialize
@@ -12,15 +13,34 @@ class App < FileWriter
     @people = []
     @books = []
     @book_index = 0
-    # load_data_from_files
-  end
 
-  # def load_data_from_files
-  #   @books = FileLoader.load_books
-  #   @people = FileLoader.load_people
-  #   @rentals =FileLoader.load_rentals(@people, @books)
-  #   @book_index = @books.map(&:index).max.to_i + 1
-  # end
+    loaded_books = FileLoader.load_books_from_file
+    loaded_books.each do |book_data|
+      book = Book.new(book_data['Title'], book_data['Author'], @book_index)
+      @books << book
+      @book_index += 1
+    end
+
+    loaded_people = FileLoader.load_people_from_file
+    loaded_people.each do |person_data|
+      if person_data['class'] == 'Teacher'
+        person = Teacher.new(person_data['Name'], person_data['Age'], person_data['Specialization'])
+      elsif person_data['class'] == 'Student'
+        person = Student.new(person_data['Name'], person_data['Age'], person_data['HasParentPermission'])
+      end
+      @people << person
+    end
+
+    loaded_rentals = FileLoader.load_rentals_from_file
+    loaded_rentals.each do |rental_data|
+      person = @people.find { |p| p.name == rental_data['Person'] }
+      book = @books.find { |b| "#{b.title} by #{b.author}" == rental_data['Book'] }
+      rental = Rental.new(person, book, rental_data['Date'])
+      @rentals << rental
+      person.add_rental(rental)
+      book.add_rental(person, rental)
+    end
+  end
 
   def create_book(title, author)
     book = Book.new(title, author, @book_index)
@@ -60,8 +80,8 @@ class App < FileWriter
   end
 
   def list_all_books
-    @books.each do |book|
-      puts "S/NO: #{book.index}, Author: #{book.author}, Title: #{book.title}"
+    @books.each_with_index do |book, index|
+      puts "S/NO: #{index}, Title: #{book.title}, Author: #{book.author}"
     end
   end
 
@@ -71,29 +91,4 @@ class App < FileWriter
       puts "Book: #{rent.book.title} by #{rent.book.author} was rented on Date: #{rent.date}"
     end
   end
-
-  # def book_to_json(book)
-  #   {
-  #     "index": book.index,
-  #     "author": book.author,
-  #     "title": book.title
-  #   }.to_json
-  # end
-  #
-  # def person_to_json(person)
-  #   {
-  #     "id": person.id,
-  #     "name": person.name,
-  #     "age": person.age,
-  #     "class": person.class
-  #   }.to_json
-  # end
-  #
-  # def rental_to_json(rental)
-  #   {
-  #     "person": person_to_json(rental.person),
-  #     "book": book_to_json(rental.book),
-  #     "date": rental.date
-  #   }.to_json
-  # end
 end
