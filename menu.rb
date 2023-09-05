@@ -113,7 +113,7 @@ class Menu
     print 'Enter the Id of your name: '
     person_id = gets.chomp.to_i
 
-    person = app.instance_variable_get(:@people).find { |p| p.id == person_id}
+    person = app.instance_variable_get(:@people).find { |p| p.id == person_id }
 
     if person.nil?
       puts 'Invalid person.'
