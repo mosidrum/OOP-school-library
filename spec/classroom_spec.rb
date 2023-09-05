@@ -14,7 +14,7 @@ describe Classroom do
   describe '#add_student' do
     it 'adds a student to the classroom and updates the student with the classroom' do
       student = double('Student')
-      
+
       expect(student).to receive(:classroom=).with(classroom)
       classroom.add_student(student)
 

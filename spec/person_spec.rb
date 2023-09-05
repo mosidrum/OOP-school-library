@@ -1,6 +1,6 @@
-require_relative 'nameable'
-require_relative 'capitalize_decorator'
-require_relative 'trimmer_decorator'
+require_relative '../nameable'
+require_relative '../capitalize_decorator'
+require_relative '../trimmer_decorator'
 
 Rspec.describe Person do
   let(:person) { Person.new(22, 'John Doe', parent_permission: true) }
