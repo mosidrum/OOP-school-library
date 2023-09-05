@@ -102,7 +102,7 @@ class Menu
     print 'Enter the index of the book you want to rent: '
     book_index = gets.chomp.to_i
 
-    if book_index.negative? || book_index >= app.books.length
+    if book_index.negative? || book_index >= app.instance_variable_get(:@books).length
       puts 'Invalid book index.'
       return
     end
@@ -110,18 +110,19 @@ class Menu
     puts 'Select your name from the following list: '
     app.list_all_people
 
-    print 'Enter the index of your name: '
-    person_index = gets.chomp.to_i
+    print 'Enter the Id of your name: '
+    person_id = gets.chomp.to_i
 
-    if person_index.negative? || person_index >= app.people.length
-      puts 'Invalid person index.'
+    person = app.instance_variable_get(:@people).find { |p| p.id == person_id }
+
+    if person.nil?
+      puts 'Invalid person.'
       return
     end
 
     print 'Enter the rental date (YYYY-MM-DD): '
     date = gets.chomp
-    book = app.books[book_index]
-    person = app.people[person_index]
+    book = app.instance_variable_get(:@books)[book_index]
     app.create_rental(person, book, date)
 
     puts 'Rental created successfully'
