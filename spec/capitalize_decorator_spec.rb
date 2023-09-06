@@ -14,5 +14,9 @@ RSpec.describe CapitalizeDecorator do
       expect(nameable).to have_received(:correct_name)
       expect(result).to eq('Jalloh')
     end
+
+    it 'handles already the capitalize name' do
+      # Add the test case here
+    end
   end
 end
