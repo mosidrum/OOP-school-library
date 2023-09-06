@@ -17,7 +17,6 @@ RSpec.describe Rentals do
       expect(rental.book).to eq(book)
       expect(rental.date).to eq(date)
 
-
       expect(person.rentals).to include(rental)
       expect(book.rentals).to include(rental)
     end
