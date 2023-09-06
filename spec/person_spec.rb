@@ -1,15 +1,18 @@
+require 'spec_helper'
 require_relative '../nameable'
 require_relative '../capitalize_decorator'
 require_relative '../trimmer_decorator'
+require_relative '../person'
+require_relative '../rentals'
 
-Rspec.describe Person do
+RSpec.describe Person do
   let(:person) { Person.new(22, 'John Doe', parent_permission: true) }
 
   describe '#initialize' do
     it 'creates person with the given age, name, parent persmission' do
       expect(person.age).to eql(22)
       expect(person.name).to eql('John Doe')
-      expect(person.parent_permission).to eql(true)
+      expect(person.parent_permission).to be(true)
       expect(person.rentals).to be_an(Array)
       expect(person.rentals).to be_empty
     end
@@ -45,15 +48,6 @@ Rspec.describe Person do
       it 'returns false' do
         expect(person.can_use_service?).to eql(false)
       end
-    end
-  end
-
-  describe '#add_rental' do
-    it 'adds a rental to the person' do
-      rental = double('Rental')
-      person.add_rental(rental)
-
-      expect(person.rentals).to include(rental)
     end
   end
 

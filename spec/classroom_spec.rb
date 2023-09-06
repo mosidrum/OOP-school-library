@@ -1,6 +1,8 @@
+require 'spec_helper'
 require_relative '../classroom'
+require_relative '../student'
 
-describe Classroom do
+RSpec.describe Classroom do
   let(:classroom) { Classroom.new('Mathematics') }
 
   describe '#initialize' do
