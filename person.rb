@@ -4,7 +4,7 @@ require_relative 'trimmer_decorator'
 
 # Represents a person with a name, age, and optional parent permission.
 class Person < Nameable
-  attr_accessor :name, :age
+  attr_accessor :name, :age, :parent_permission, :rentals
   attr_reader :id
 
   def initialize(age, name = 'Unknown', parent_permission: true)
