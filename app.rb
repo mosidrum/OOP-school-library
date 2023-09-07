@@ -23,9 +23,9 @@ class App < FileWriter
 
     loaded_people = FileLoader.load_people_from_file
     loaded_people.each do |person_data|
-      if person_data['class'] == 'Teacher'
+      if person_data['Class'] == 'Teacher'
         person = Teacher.new(person_data['Name'], person_data['Age'], person_data['Specialization'])
-      elsif person_data['class'] == 'Student'
+      elsif person_data['Class'] == 'Student'
         person = Student.new(person_data['Name'], person_data['Age'], person_data['HasParentPermission'])
       end
       @people << person
