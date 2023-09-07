@@ -15,7 +15,7 @@ RSpec.describe CapitalizeDecorator do
       expect(result).to eq('Jalloh')
     end
 
-    it "handles already the capitalize name" do
+    it 'handles already the capitalize name' do
       nameable = double(Nameable)
       allow(nameable).to receive(:correct_name).and_return('Isaac')
       decorator = CapitalizeDecorator.new(nameable)
