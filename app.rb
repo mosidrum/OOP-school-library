@@ -9,6 +9,7 @@ require_relative 'file_loader'
 require 'json'
 class App < FileWriter
   def initialize
+    super
     @rentals = []
     @people = []
     @books = []
