@@ -75,7 +75,11 @@ class App < FileWriter
 
   def list_all_people
     @people.each do |person|
-      puts "Id: #{person.id}, Name: #{person.name}, Age: #{person.age}, Class: #{person.class}"
+      if person
+        puts "Id: #{person.id}, Name: #{person.name}, Age: #{person.age}, Class: #{person.class}"
+      else
+        puts "Invalid person data."
+      end
     end
   end
 
