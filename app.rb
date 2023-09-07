@@ -35,10 +35,14 @@ class App < FileWriter
     loaded_rentals.each do |rental_data|
       person = @people.find { |p| p.name == rental_data['Person'] }
       book = @books.find { |b| "#{b.title} by #{b.author}" == rental_data['Book'] }
-      rental = Rental.new(person, book, rental_data['Date'])
-      @rentals << rental
-      person.add_rental(rental)
-      book.add_rental(person, rental)
+      if book.nil?
+        puts "Book not found for rental data: #{rental_data.inspect}"
+      else
+        rental = Rental.new(person, book, rental_data['Date'])
+        @rentals << rental
+        person.add_rental(rental)
+        book.add_rental(person, rental)
+      end
     end
   end
 
