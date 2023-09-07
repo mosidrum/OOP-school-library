@@ -30,20 +30,6 @@ class App < FileWriter
       end
       @people << person
     end
-
-    loaded_rentals = FileLoader.load_rentals_from_file
-    loaded_rentals.each do |rental_data|
-      person = @people.find { |p| p.name == rental_data['Person'] }
-      book = @books.find { |b| "#{b.title} by #{b.author}" == rental_data['Book'] }
-      if book.nil?
-        puts "Book not found for rental data: #{rental_data.inspect}"
-      else
-        rental = Rental.new(person, book, rental_data['Date'])
-        @rentals << rental
-        person.add_rental(rental)
-        book.add_rental(person, rental)
-      end
-    end
   end
 
   def create_book(title, author)
@@ -93,10 +79,21 @@ class App < FileWriter
     end
   end
 
-  def list_rentals_by_person(person_id)
-    search = @rentals.select { |rent| rent.person.id == person_id }
-    search.each do |rent|
-      puts "Book: #{rent.book.title} by #{rent.book.author} was rented on Date: #{rent.date}"
+  def list_all_rentals
+    loaded_rentals = FileLoader.load_rentals_from_file
+    puts "List of all rentals:"
+    loaded_rentals.each_with_index do |rental_data, index|
+      person_name = rental_data['Person']
+      book_info = rental_data['Book']
+      author = rental_data['Author']
+      date = rental_data['Date']
+
+      puts "Rental #{index + 1}:"
+      puts "Person: #{person_name}"
+      puts "Book: #{book_info} by #{author}"
+      puts "Date: #{date}"
+      puts ""
     end
   end
+
 end
