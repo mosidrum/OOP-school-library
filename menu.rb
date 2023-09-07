@@ -123,9 +123,8 @@ class Menu
     book = app.instance_variable_get(:@books)[book_index]
     app.create_rental(person, book, date)
 
-    puts "Rental created successfully for #{person.name}" # Show the selected person's name
+    puts 'Rental created successfully'
   end
-
 
   def self.do_list_rentals(app)
     app.list_all_rentals
