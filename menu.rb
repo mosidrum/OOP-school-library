@@ -22,7 +22,7 @@ class Menu
       3 => :create_rental,
       4 => :list_all_books,
       5 => :list_all_people,
-      6 => :list_rentals,
+      6 => :list_all_rentals,
       7 => :end_app
     }
 
@@ -38,10 +38,8 @@ class Menu
           do_create_person(app)
         when 3
           do_create_rental(app)
-        when 4, 5
+        when 4, 5, 6 # Updated the case for option 6
           app.send(choices[user_input])
-        when 6
-          do_list_rentals(app)
         when 7
           app.send(choices[user_input])
           break
@@ -129,8 +127,6 @@ class Menu
   end
 
   def self.do_list_rentals(app)
-    print 'Enter the Id of the person: '
-    person_id = gets.chomp.to_i
-    app.list_rentals_by_person(person_id)
+    app.list_all_rentals
   end
 end
