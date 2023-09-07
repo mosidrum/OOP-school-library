@@ -118,10 +118,12 @@ class Menu
       return
     end
 
+    human = person.name
+
     print 'Enter the rental date (YYYY-MM-DD): '
     date = gets.chomp
     book = app.instance_variable_get(:@books)[book_index]
-    app.create_rental(person, book, date)
+    app.create_rental(human, book, date)
 
     puts 'Rental created successfully'
   end
