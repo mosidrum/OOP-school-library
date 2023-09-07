@@ -111,14 +111,12 @@ class Menu
     print 'Enter the Id of your name: '
     person_id = gets.chomp.to_i
 
-    someone = app.instance_variable_get(:@people).find { |p| p.id == person_id }
+    person = app.instance_variable_get(:@people).find { |p| p.id == person_id }
 
-    if someone.nil?
+    if person.nil?
       puts 'Invalid person.'
       return
     end
-
-    person = someone.name
 
     print 'Enter the rental date (YYYY-MM-DD): '
     date = gets.chomp
