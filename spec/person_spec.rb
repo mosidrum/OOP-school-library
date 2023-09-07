@@ -51,6 +51,15 @@ RSpec.describe Person do
     end
   end
 
+  describe '#add_rental' do
+    it 'adds a rental to the person' do
+      rental = double('Rental')
+      person.add_rental(rental)
+
+      expect(person.rentals).to include(rental)
+    end
+  end
+
   describe '#list_rentals' do
     it 'prints rentals for the person' do
       rental = double('Rental', book: double('Book', title: 'Sample Title', author: 'Sample Author'),
