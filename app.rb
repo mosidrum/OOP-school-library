@@ -68,7 +68,7 @@ class App < FileWriter
       if person
         puts "Id: #{person.id}, Name: #{person.name}, Age: #{person.age}, Class: #{person.class}"
       else
-        puts "Invalid person data."
+        puts 'Invalid person data.'
       end
     end
   end
@@ -81,7 +81,7 @@ class App < FileWriter
 
   def list_all_rentals
     loaded_rentals = FileLoader.load_rentals_from_file
-    puts "List of all rentals:"
+    puts 'List of all rentals:'
     loaded_rentals.each_with_index do |rental_data, index|
       person_name = rental_data['Person']
       book_info = rental_data['Book']
@@ -92,8 +92,7 @@ class App < FileWriter
       puts "Person: #{person_name}"
       puts "Book: #{book_info} by #{author}"
       puts "Date: #{date}"
-      puts ""
+      puts ''
     end
   end
-
 end

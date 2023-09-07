@@ -2,18 +2,16 @@ require 'json'
 
 class FileLoader
   def self.load_books_from_file
-    load_data_from_file("books.json")
+    load_data_from_file('books.json')
   end
 
   def self.load_people_from_file
-    load_data_from_file("people.json")
+    load_data_from_file('people.json')
   end
 
   def self.load_rentals_from_file
-    load_data_from_file("rental.json")
+    load_data_from_file('rental.json')
   end
-
-  private
 
   def self.load_data_from_file(filename)
     loaded_data = []
